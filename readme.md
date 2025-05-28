@@ -78,7 +78,7 @@ I'll update this section once I've tested this myself, but you could use this to
 
 ### Clearing Page Cache
 
-Clear your entire page cache using `php artisan page-cache:clear`. You can also recrawl your site to warm the cache using the `--touch` option.
+Clear your entire page cache using `php artisan page-cache:clear`. 
 
 ### Refreshing Pages
 

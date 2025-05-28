@@ -5,8 +5,6 @@ namespace SiteOrigin\PageCache\Tests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Storage;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use SiteOrigin\KernelCrawler\Crawler;
-use SiteOrigin\KernelCrawler\CrawlerServiceProvider;
 use SiteOrigin\PageCache\PageCacheServiceProvider;
 
 class TestCase extends OrchestraTestCase
@@ -37,8 +35,7 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            PageCacheServiceProvider::class,
-            CrawlerServiceProvider::class
+            PageCacheServiceProvider::class
         ];
     }
 
@@ -74,15 +71,5 @@ class TestCase extends OrchestraTestCase
         }
 
         $fs->put('test/page__.html', file_get_contents(__DIR__.'/html/page__.html'));
-    }
-
-    /**
-     * Crawl the site from a starting URL. Triggers caching.
-     *
-     * @param string $startUrl
-     */
-    public function crawlSite(string $startUrl)
-    {
-        (new Crawler([$startUrl]))->all();
     }
 }

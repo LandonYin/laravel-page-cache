@@ -4,7 +4,6 @@ namespace SiteOrigin\PageCache\Commands;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
-use SiteOrigin\KernelCrawler\Commands\StartCrawler;
 use SiteOrigin\PageCache\Facades\PageCache;
 use SiteOrigin\PageCache\PageCollection;
 
@@ -15,7 +14,7 @@ class ClearCache extends Command
      *
      * @var string
      */
-    protected $signature = 'page-cache:clear {--touch : Crawl site from the home page to warm the cache.}';
+    protected $signature = 'page-cache:clear';
 
     /**
      * The console command description.
@@ -33,9 +32,7 @@ class ClearCache extends Command
     {
         $pages = new PageCollection();
         $pages->deletePages();
-
-        if ($this->option('touch')) {
-            $this->call('crawler:start', []);
-        }
+        
+        $this->info('Page cache cleared successfully.');
     }
 }

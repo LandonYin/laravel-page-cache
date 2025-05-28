@@ -41,14 +41,12 @@ class CommandsTest extends TestCase
         $article->title = 'New Title';
         $article->save();
 
-        // This should refresh the main page, and the 2 versions of the first articles page
-        $this->artisan('page-cache:clear');
+        // This should clear all cache files
+        $this->artisan('page-cache:clear')
+            ->expectsOutput('Page cache cleared successfully.');
+        
         $page = Page::fromUrl(route('articles.show', $article));
-
         $this->assertFalse($page->fileExists());
-
-        $this->artisan('page-cache:clear --touch');
-        $this->assertTrue($page->fileExists());
     }
 
 }
