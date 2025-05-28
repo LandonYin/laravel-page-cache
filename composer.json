@@ -1,5 +1,5 @@
 {
-    "name": "siteorigin/laravel-page-cache",
+    "name": "landonyin/laravel-page-cache",
     "description": "Caches responses as static files on disk for lightning fast page loads.",
     "keywords": ["laravel", "cache"],
     "license": "MIT",
